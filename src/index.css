@@ -1,0 +1,765 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #16181d;
+  --slate: #5b6472;
+  --mist: #8a929e;
+  --line: #e6e8ec;
+  --paper: #ffffff;
+  --canvas: #f2f4f7;
+  --accent: #1a56db;
+  --accent-soft: #eef2ff;
+  --ok: #0f7b4a;
+  --ok-soft: #e6f4ec;
+  --busy: #b4401f;
+  --busy-soft: #fbeae4;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background: var(--canvas);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+/* ---- Navbar ---- */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
+  height: 60px;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar .brand {
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.navbar a {
+  color: var(--slate);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.15s ease;
+}
+
+.navbar a:hover { color: var(--accent); }
+
+.logout-btn {
+  color: var(--slate);
+  background: none;
+  border: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.logout-btn:hover { color: var(--accent); }
+
+/* ---- Page ---- */
+.page-title {
+  padding: 2rem 2rem 0.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.status-msg { padding: 2rem; color: var(--mist); }
+
+/* ---- Cars grid ---- */
+.cars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  padding: 1.5rem 2rem 3rem;
+}
+
+/* ---- Card ---- */
+.card-link { text-decoration: none; color: inherit; display: block; }
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.5rem;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: #d4d8de;
+  box-shadow: 0 8px 24px rgba(22, 24, 29, 0.08);
+}
+
+.card-brand {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--mist);
+  margin-bottom: 0.15rem;
+}
+
+.card-model {
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+.card-price {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.card-price span { font-size: 0.8rem; font-weight: 500; color: var(--mist); }
+
+.card-meta {
+  display: flex;
+  gap: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.82rem;
+  color: var(--slate);
+}
+
+/* ---- Status pill ---- */
+.pill {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.pill-available { background: var(--ok-soft); color: var(--ok); }
+.pill-rented { background: var(--busy-soft); color: var(--busy); }
+
+/* ---- Details ---- */
+.car-details {
+  max-width: 620px;
+  margin: 2.5rem auto;
+  padding: 2.5rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.car-details h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.details-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+.details-row:last-child { border-bottom: none; }
+.details-label { color: var(--mist); font-weight: 500; }
+.details-value { color: var(--ink); font-weight: 600; }
+
+/* ---- Login form ---- */
+.auth-wrap {
+  max-width: 380px;
+  margin: 4rem auto;
+  padding: 2.5rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.auth-wrap h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; }
+
+.auth-wrap input {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  margin-bottom: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  font-size: 0.92rem;
+  transition: border-color 0.15s ease;
+}
+.auth-wrap input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 0.7rem;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.btn-primary:hover { background: #1442ab; }
+
+.form-error {
+  color: var(--busy);
+  font-size: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.details-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+.details-brand {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--mist);
+  margin-bottom: 0.2rem;
+}
+.details-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+.details-price span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--mist);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 1.5rem 2rem 0;
+  color: var(--slate);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color 0.15s ease, gap 0.15s ease;
+}
+
+.back-link:hover {
+  color: var(--accent);
+  gap: 0.7rem;
+}
+
+.navbar-user {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.35rem 0.75rem;
+  background: var(--accent-soft);
+  border-radius: 8px;
+}
+
+.booking-page {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+    min-height: 100vh;
+    background: #f4f5f7;
+}
+
+.booking-card {
+    width: 100%;
+    max-width: 560px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 2rem;
+}
+
+.booking-title {
+    margin: 0 0 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #1a1a2e;
+}
+
+.car-summary {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.car-summary__image {
+    width: 120px;
+    height: 80px;
+    border-radius: 10px;
+    background: #e9ecef;
+    flex-shrink: 0;
+}
+
+.car-summary__name {
+    margin: 0 0 0.25rem;
+    font-size: 1.15rem;
+    color: #1a1a2e;
+}
+
+.car-summary__plate {
+    margin: 0 0 0.5rem;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.car-summary__price {
+    margin: 0;
+    font-weight: 600;
+    color: #4361ee;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.form-group input {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.form-group input:focus {
+    border-color: #4361ee;
+}
+
+.price-summary {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.price-summary__row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    color: #555;
+    padding: 0.3rem 0;
+}
+
+.price-summary__row--total {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #1a1a2e;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 0.4rem;
+    padding-top: 0.6rem;
+}
+
+.booking-submit {
+    width: 100%;
+    padding: 0.85rem;
+    border: none;
+    border-radius: 8px;
+    background: #4361ee;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.booking-submit:hover {
+    background: #3a53d0;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.modal-message {
+    margin: 0 0 1.25rem;
+    color: #1a1a2e;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.modal-close {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: #e63946;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.modal-close:hover {
+    background: #c92a37;
+}
+
+.book-btn {
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.9rem 1rem;
+    border: none;
+    border-radius: 10px;
+    background: #4361ee;
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, transform 0.05s;
+}
+
+.book-btn:hover {
+    background: #3a53d0;
+}
+
+.book-btn:active {
+    transform: scale(0.99);
+}
+
+.login-to-book {
+    display: block;
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.9rem 1rem;
+    border-radius: 10px;
+    background: #f1f3f9;
+    color: #4361ee;
+    text-align: center;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+
+.login-to-book:hover {
+    background: #e4e8f5;
+}
+
+.toast {
+    position: fixed;
+    top: 80px;     
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.3rem;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+    font-weight: 600;
+    color: #1a1a2e;
+    border-left: 4px solid #2e9e5b;
+    animation: toast-in 0.25s ease-out;
+}
+
+.toast__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #2e9e5b;
+    color: #fff;
+    font-size: 0.85rem;
+}
+
+.rentals-page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+}
+
+.rentals-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 1rem 0 1.5rem;
+}
+
+.rentals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.rental-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+        "car   price"
+        "dates price";
+    gap: 0.4rem 1rem;
+    align-items: center;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.2rem 1.4rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.15s, transform 0.05s;
+}
+
+.rental-card:hover {
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+}
+
+.rental-card__car {
+    grid-area: car;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #1a1a2e;
+}
+
+.rental-card__dates {
+    grid-area: dates;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.rental-card__price {
+    grid-area: price;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #4361ee;
+    white-space: nowrap;
+}
+
+.rental-card__price::after {
+    content: " EUR";
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #8a94a6;
+}
+
+.rental-card__dates {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.date-block {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    color: #1a1a2e;
+}
+
+.date-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #8a94a6;
+    margin-bottom: 0.15rem;
+}
+
+.error-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 1.5rem;
+    max-width: 420px;
+    margin: 2rem auto;
+}
+
+.error-state__icon {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.error-state__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 0 0 0.5rem;
+}
+
+.error-state__message {
+    font-size: 1rem;
+    color: #6c757d;
+    margin: 0 0 1.75rem;
+    line-height: 1.5;
+}
+
+.error-state__button {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    border-radius: 10px;
+    background: #4361ee;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s;
+}
+
+.error-state__button:hover {
+    background: #3a53d0;
+}
+
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+    padding: 1.5rem;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08);
+    padding: 2.25rem 2rem;
+}
+
+.auth-card__header {
+    margin-bottom: 1.75rem;
+}
+
+.auth-card__title {
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin: 0 0 0.4rem;
+}
+
+.auth-card__subtitle {
+    font-size: 0.95rem;
+    color: #6c757d;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.auth-error {
+    background: #fdeaea;
+    border-left: 3px solid #e63946;
+    color: #b02a37;
+    padding: 0.7rem 0.9rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 1.25rem;
+}
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+.auth-field label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 0.4rem;
+}
+
+.auth-field input {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.auth-field input:focus {
+    border-color: #4361ee;
+}
+
+.auth-submit {
+    width: 100%;
+    padding: 0.85rem;
+    margin-top: 0.5rem;
+    border: none;
+    border-radius: 8px;
+    background: #4361ee;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.auth-submit:hover {
+    background: #3a53d0;
+}
+
+.auth-switch {
+    text-align: center;
+    margin: 1.5rem 0 0;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.auth-switch a {
+    color: #4361ee;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
